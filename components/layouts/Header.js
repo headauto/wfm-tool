@@ -20,9 +20,6 @@ const Header = () => {
           </li>
     
           <li className="nav-item">
-            <Link href="/schedules" ><a className="nav-link mx-3 border-bottom">Kronos {(entries.type === "schedules") && <span className="badge bg-danger">E</span>}</a></Link>
-          </li>
-          <li className="nav-item">
             <Link href="/schedules" ><a className="nav-link mx-3 border-bottom">Schedules {(entries.type === "schedules") && <span className="badge bg-danger">E</span>}</a></Link>
           </li>
           <li className="nav-item">
