@@ -71,7 +71,7 @@ const ScheduleConverter = ({ raw, exportConverted }) => {
 
   return (
     <button onClick={handleConversion} disabled={raw.length < 1} className="btn btn-outline-primary m-2">
-      Schedules
+      Kronos
     </button>
   )
 }
