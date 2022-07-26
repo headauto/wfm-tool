@@ -3,6 +3,7 @@ import { Fragment, useState, useContext } from 'react'
 import { CSVDownloader } from 'react-papaparse'
 import AdherenceConverter from '../components/converters/AdherenceConverter'
 import AuditTrailConverter from '../components/converters/AuditTrailConverter'
+import KronosScheduleConverter from '../components/converters/KronosScheduleConverter'
 import ScheduleConverter from '../components/converters/ScheduleConverter'
 import IntervalConverter from '../components/converters/IntervalsConverter'
 import CSVUploader from '../components/csvHandlers/CSVUploader'
@@ -70,6 +71,9 @@ export const EntriesConverter = () => {
         <div className=" d-flex flex-column align-items-center text-center my-4">
           <h3>CONVERTERS</h3>
           <div className="row my-2">
+            <div className="col">
+              <KronosScheduleConverter raw={raw} exportConverted={handleConvert} />
+            </div>
             <div className="col">
               <ScheduleConverter raw={raw} exportConverted={handleConvert} />
             </div>
