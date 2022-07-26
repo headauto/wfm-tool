@@ -48,7 +48,7 @@ const ScheduleConverter = ({ raw, exportConverted }) => {
         current.actualDate = data[i][_DATE]
         entries.push([current.agentId, current.agentName, current.date, current.actualDate, "Shift", data[i][_START], data[i][_END] ? data[i][_END] : "-"])
       }
-      if (data[i][_ACTIVITY]) {
+      if (data[i][_ACTIVITY] && data[i][_ACTIVITY] !== "OT") {
         if (data[i][_ACT_START].split(" ")[1] === "PM" && data[i][_ACT_END].split(" ")[1] === "AM") {
           console.log("BEFORE", current.actualDate)
           current.actualDate = incrementDate(current.date).split("/").map(number => {
