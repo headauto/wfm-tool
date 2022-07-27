@@ -67,6 +67,7 @@ const Schedules = () => {
     const _ACTIVITY = 4
     const _START = 5
     const _END = 6
+    console.log(data)
 
     //Input Validation
     if (data[0]) {
@@ -110,8 +111,15 @@ const Schedules = () => {
         agents[current[_IEXID]][current[_DATE]] = {}
       }
 
+      if (current[_ACTIVITY] === "OT") {
+        agents[current[_IEXID]][current[_DATE]].OT = {
+          start: current[_START],
+          end: current[_END],
+        }
+      }
       //Populate agents 'dates' and shifts
       if (current[_ACTIVITY] === "Shift") {
+        console.log(agents[current[_IEXID]][current[_DATE]].OT)
         agents[current[_IEXID]][current[_DATE]].shift = {
           start: current[_START],
           end: current[_END],
@@ -160,10 +168,17 @@ const Schedules = () => {
         agents[current[_IEXID]][current[_DATE]].hasOpen = true
       }
     }
-
+    Object.keys(agents).filter(agent => agent === '12594');
     Object.keys(agents).forEach((agent) => {
       newDatesList.forEach((date) => {
         if (agents[agent][date]) {
+          if (agents[agent][date].OT){
+            if (agents[agent][date].OT.end === agents[agent][date].shift.end){
+            agents[agent][date].shift.end = agents[agent][date].OT.start;
+            }else if(agents[agent][date].shift.start === agents[agent][date].OT.start){
+              agents[agent][date].shift.start = agents[agent][date].OT.end;
+            }
+        }
           if (agents[agent][date].hasOpen) {
             agents[agent][date].output =
               convertColonTime(agents[agent][date].shift.start) +
