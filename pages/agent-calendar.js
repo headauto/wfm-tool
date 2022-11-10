@@ -13,7 +13,7 @@ import {
 } from "../snippets/date-handling"
 import { DataContext } from "../contexts/DataContextProvider"
 
-const Schedules = () => {
+const AgentCalendar = () => {
   const { entries, setEntries } = useContext(DataContext)
 
   const [schedules, setSchedules] = useState({})
