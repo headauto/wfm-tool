@@ -6,7 +6,11 @@ export const stringToDate = (dateStr) => {
 }
 
 export const dateToString = (dateObj) => {
-  let out = [[dateObj.getMonth() + 1], [dateObj.getDate()], [dateObj.getFullYear()]]
+  let out = [
+    [dateObj.getMonh() + 1],
+    [dateObj.getDate()],
+    [dateObj.getFullYear()],
+  ]
   if (out[0] < 10) {
     out[0] = ["0" + out[0]]
   }
@@ -24,10 +28,10 @@ export const incrementDate = (date) => {
 
 export const convertTime = (time) => {
   let timeAux = time.split(" ")
-  timeAux[0] = timeAux[0].split(":").map(val => parseInt(val))
+  timeAux[0] = timeAux[0].split(":").map((val) => parseInt(val))
   let out = 0
   if (timeAux[0][0] === 12) {
-    timeAux[1] === "AM" ? out = "0" : out = "12"
+    timeAux[1] === "AM" ? (out = "0") : (out = "12")
 
     if (timeAux[0][1] >= 10) {
       out += timeAux[0][1]
@@ -35,7 +39,9 @@ export const convertTime = (time) => {
       out += "0" + timeAux[0][1]
     }
   } else {
-    timeAux[1] === "AM" ? out = timeAux[0][0] * 100 + timeAux[0][1] : out = timeAux[0][0] * 100 + timeAux[0][1] + 1200
+    timeAux[1] === "AM"
+      ? (out = timeAux[0][0] * 100 + timeAux[0][1])
+      : (out = timeAux[0][0] * 100 + timeAux[0][1] + 1200)
     out = String(out)
   }
 
@@ -47,14 +53,15 @@ export const convertTime = (time) => {
 
 export const convertColonTime = (time) => {
   let timeAux = time.split(" ")
-  timeAux[0] = timeAux[0].split(":").map(val => parseInt(val))
+  timeAux[0] = timeAux[0].split(":").map((val) => parseInt(val))
 
   let out = 0
   if (timeAux[0][0] === 12) {
-    timeAux[1] === "AM" ? out = "00:" : out = "12:"
-
+    timeAux[1] === "AM" ? (out = "00:") : (out = "12:")
   } else {
-    timeAux[1] === "AM" ? out = `${timeAux[0][0]}:` : out = `${timeAux[0][0] + 12}:`
+    timeAux[1] === "AM"
+      ? (out = `${timeAux[0][0]}:`)
+      : (out = `${timeAux[0][0] + 12}:`)
     if (out.length === 2) {
       out = "0" + out
     }
@@ -85,7 +92,6 @@ export const considerPM = (time, isFrom) => {
       } else {
         return getMinutes(split[0]) - 720
       }
-
     } else {
       return getMinutes(split[0])
     }
