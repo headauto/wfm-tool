@@ -5,14 +5,13 @@
 //// entries: 2D matrix with the entries matching the header fields.
 import { useContext } from "react"
 import { DataContext } from "../../contexts/DataContextProvider"
-import { dateToString, stringToDate } from "../../snippets/date-handling"
 
 const spec_string_to_date = (date_str) => {
   let output = new Date(date_str)
   return output
 }
 
-const ScheduleConverter = ({ raw, exportConverted }) => {
+const AgentCalendarConverter = ({ raw, exportConverted }) => {
   const { setEntries } = useContext(DataContext)
 
   const handleConversion = () => {
@@ -88,7 +87,7 @@ const ScheduleConverter = ({ raw, exportConverted }) => {
     }
 
     exportConverted({ header, entries })
-    setEntries({ data: [header, ...entries], type: "agent-calendar" })
+    setEntries({ data: [header, ...entries], type: "calendar" })
   }
 
   return (
@@ -102,4 +101,4 @@ const ScheduleConverter = ({ raw, exportConverted }) => {
   )
 }
 
-export default ScheduleConverter
+export default AgentCalendarConverter
