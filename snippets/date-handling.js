@@ -1,29 +1,14 @@
 //AUX FUNCTIONS
 
-export const stringToDate = (dateStr) => {
-  let out = new Date(dateStr.split("/").join("-"))
-  return out
+export const convertDate = (dateStr) => {
+  let newDate = new Date(dateStr)
+  return newDate.toISOString().split("T")[0]
 }
 
-export const dateToString = (dateObj) => {
-  let out = [
-    [dateObj.getMonh() + 1],
-    [dateObj.getDate()],
-    [dateObj.getFullYear()],
-  ]
-  if (out[0] < 10) {
-    out[0] = ["0" + out[0]]
-  }
-  if (out[1] < 10) {
-    out[1] = ["0" + out[1]]
-  }
-  return out.join("/")
-}
-
-export const incrementDate = (date) => {
-  let newDate = stringToDate(date)
+export const incrementDate = (dateStr) => {
+  let newDate = new Date(dateStr)
   newDate.setDate(newDate.getDate() + 1)
-  return dateToString(newDate)
+  return newDate.toISOString().split("T")[0]
 }
 
 export const convertTime = (time) => {

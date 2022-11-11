@@ -5,8 +5,6 @@ import CSVUploader from "../components/csvHandlers/CSVUploader"
 import SQLTable from "../components/displays/SQLTable"
 import { CSVDownloader } from "react-papaparse"
 import {
-  dateToString,
-  stringToDate,
   convertTime,
   incrementDate,
   convertColonTime,
@@ -88,7 +86,7 @@ const Schedules = () => {
     for (let i = 1; i < data.length; i++) {
       let current = data[i]
 
-      current[_DATE] = dateToString(stringToDate(current[_DATE]))
+      current[_DATE] = current[_DATE]
 
       //Add to 'id' and 'date' Lists
       if (!newIdList.includes(current[_IEXID])) {
