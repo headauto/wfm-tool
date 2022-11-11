@@ -54,14 +54,14 @@ const AgentCalendar = () => {
     let newKronos = data.map((entry, index) => {
       let newEntry = entry.slice()
       if (index == 0) {
-        newEntry[_IEXID] = "EMPID"
+        newEntry[_IEXID] = "BOOST ID"
       } else {
+        newEntry[_NUMHOURS] = specShifts[newEntry[_IEXID]] || 8
         newEntry[_IEXID] =
           agentData[newEntry[_IEXID]] || `NF: ${newEntry[_IEXID]}`
         newEntry[_PAYCODE] = newEntry[_PAYCODE]
           ? mappings[newEntry[_PAYCODE]] || `NF: ${newEntry[_PAYCODE]}`
           : ""
-        newEntry[_NUMHOURS] = specShifts[newEntry[_IEXID]] || 8
       }
       return newEntry
     })
@@ -92,6 +92,8 @@ const AgentCalendar = () => {
         newSpecShifts[entry[_IEXID]] = 8
       }
     })
+
+    console.log(newAgentData)
 
     setAgentData(newAgentData)
     setSpecShifts(newSpecShifts)
@@ -146,7 +148,7 @@ const AgentCalendar = () => {
                 loadedHandler={handleUploadAgentData}
                 removeHandler={() => setLoaded({ ...loaded, agentData: false })}
                 header={"Agent Data CSV"}
-                label="Insert Agent Data CSV: PROJECT-NAME-IEXID-BOOSTID"
+                label="Insert Agent Data CSV: PROJECT-NAME-IEXID-BOOSTID-NUMHOURS"
               />
             </div>
             <div className="col">
