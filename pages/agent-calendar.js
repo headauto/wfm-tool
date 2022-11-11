@@ -56,7 +56,9 @@ const AgentCalendar = () => {
       if (index == 0) {
         newEntry[_IEXID] = "BOOST ID"
       } else {
-        newEntry[_NUMHOURS] = specShifts[newEntry[_IEXID]] || 8
+        newEntry[_NUMHOURS] = newEntry[_NUMHOURS]
+          ? specShifts[newEntry[_IEXID]] || 8
+          : ""
         newEntry[_IEXID] =
           agentData[newEntry[_IEXID]] || `NF: ${newEntry[_IEXID]}`
         newEntry[_PAYCODE] = newEntry[_PAYCODE]
