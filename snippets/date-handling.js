@@ -1,7 +1,7 @@
 //AUX FUNCTIONS
 
 export const convertDate = (dateStr) => {
-  let newDate = new Date(dateStr)
+  let newDate = new Date(dateStr + " 12:00:00")
   return newDate.toISOString().split("T")[0]
 }
 
