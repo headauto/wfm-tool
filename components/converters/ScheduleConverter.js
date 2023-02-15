@@ -41,7 +41,7 @@ const ScheduleConverter = ({ raw, exportConverted }) => {
     let entries = []
 
     for (let i = 5; i <= data.length - 8; i++) {
-      if (/Agent:/.test(data[i][_AGENT])) {
+      if (/Agent:/.test(data[i][_AGENT]) && current.agent !== data[i][_AGENT]) {
         current.agent = data[i][_AGENT]
         let split = data[i][_AGENT].split(" ")
         split.shift()
