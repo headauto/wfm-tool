@@ -6,7 +6,7 @@ export const convertDate = (dateStr) => {
 }
 
 export const incrementDate = (dateStr) => {
-  let newDate = new Date(dateStr)
+  let newDate = new Date(dateStr + " 12:00:00")
   newDate.setDate(newDate.getDate() + 1)
   return newDate.toISOString().split("T")[0]
 }

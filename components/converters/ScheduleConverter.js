@@ -43,7 +43,6 @@ const ScheduleConverter = ({ raw, exportConverted }) => {
 
     for (let i = 5; i <= data.length - 8; i++) {
       if (/Agent:/.test(data[i][_AGENT]) && current.agent !== data[i][_AGENT]) {
-        console.log("FOUND NEW AGENT: ", data[i][_AGENT])
         current.agent = data[i][_AGENT]
         let split = data[i][_AGENT].split(" ")
         split.shift()
@@ -51,7 +50,6 @@ const ScheduleConverter = ({ raw, exportConverted }) => {
         current.agentName = split.join(" ")
       } else {
         if (/[0-9]+\/[0-9]+/.test(data[i][_DATE])) {
-          console.log("FOUND NEW DATE: ", data[i][_DATE])
           current.date = data[i][_DATE]
           current.actualDate = data[i][_DATE]
           console.log("Current & Actual: ", current.date, current.actualDate)
@@ -66,14 +64,11 @@ const ScheduleConverter = ({ raw, exportConverted }) => {
           ])
         }
         if (data[i][_ACTIVITY]) {
-          console.log("FOUND ACTIVITY: ", data[i][_ACTIVITY], current.date)
           if (
             data[i][_ACT_START].split(" ")[1] === "PM" &&
             data[i][_ACT_END].split(" ")[1] === "AM"
           ) {
-            console.log(current.date)
             current.actualDate = incrementDate(current.date)
-            console.log(current.date)
           }
 
           console.log("ENTRY: ", current.date, convertDate(current.date))
