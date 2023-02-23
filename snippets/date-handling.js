@@ -2,7 +2,16 @@
 
 export const convertDate = (dateStr) => {
   let newDate = new Date(dateStr + " 12:00:00")
-  return newDate.toISOString().split("T")[0]
+
+  const padTo2Digits = (num) => {
+    return num.toString().padStart(2, "0")
+  }
+
+  return [
+    padTo2Digits(newDate.getMonth() + 1),
+    padTo2Digits(newDate.getDate()),
+    newDate.getFullYear(),
+  ].join("/")
 }
 
 export const incrementDate = (dateStr) => {

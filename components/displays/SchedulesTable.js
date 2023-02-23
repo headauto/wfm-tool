@@ -76,14 +76,14 @@ const SchedulesTable = ({ dates, iexIds, activities, schedules }) => {
         <div className="d-flex overflow-auto mostly-customized-scrollbar">
           {dates &&
             dates.map((date) => {
-              let splitDate = date.split("-")
+              let splitDate = date.split("/")
               return (
                 <div
                   key={"column-" + date}
                   className="d-flex flex-column column-schedules"
                 >
                   <div className="bg-dark text-light border border-white schedule-item px-1">
-                    {splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0]}
+                    {splitDate[1] + "/" + splitDate[0] + "/" + splitDate[2]}
                   </div>
                   {iexIds &&
                     iexIds.map((id) => {
@@ -119,11 +119,11 @@ const SchedulesTable = ({ dates, iexIds, activities, schedules }) => {
                                   handleSelectDetail(
                                     daily.breakdown,
                                     schedules[id].name,
-                                    splitDate[2] +
+                                    splitDate[1] +
                                       "/" +
-                                      splitDate[1] +
+                                      splitDate[0] +
                                       "/" +
-                                      splitDate[0]
+                                      splitDate[2]
                                   )
                                 }
                               >
@@ -166,7 +166,7 @@ const SchedulesTable = ({ dates, iexIds, activities, schedules }) => {
                       }
                     })}
                   <div className="bg-secondary text-light border border-white schedule-item px-1">
-                    {splitDate[2] + "/" + splitDate[1] + "/" + splitDate[0]}
+                    {splitDate[1] + "/" + splitDate[0] + "/" + splitDate[2]}
                   </div>
                   {activities &&
                     activities.map((activity) => {
